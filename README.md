@@ -15,14 +15,18 @@ No. de cuenta:423088153
 La manera en que definimos a los arboles de n ramas es la siguiente:
 
 data Arbol a = Void | Node a [Arbol a]
-           deriving (Show, Eq)
 
-La definición de los arboles esta basada en la vista en clase, tomando Void como la reprecentación de un arbol vacío, y usamos la función constructiva Node para establecer la forma de un árbol no vacío.
+La definición de los arboles esta basada en la vista en clase con los arboles binarios
+El constructor Void representa un árbol vacío, lo cual sirve como caso base y permite detener la recursión en varias funciones.
 
-En cuanto a este segundo caso la declaración del dato muestra esto:
- Node a [Arbol a]
- 
-Lo que aquí dice es que para construir un árbol no vacío de tipo "a" necesitas:  un elemento de tipo a y una lista con arboles. 
+El constructor Node modela un árbol no vacío. Su forma es:
 
-El elemento de tipo a es necesario para crear el nodo del árbol,
-y al pedir una lista con arboles puedes crear cuantas ramas quieras, pues las listas permites agrupar n elementos de cualquier tipo, en esta caso arboles.
+Node a [Arbol a]
+
+indica que un nodo contiene dos elementos:
+
+Un valor de tipo a, que corresponde a la información almacenada en la raíz del nodo.
+
+Una lista de subárboles, [Arbol a], que permite representar un número arbitrario de hijos.
+
+Elegimos una lista para los hijos porque permite construir árboles con cero, uno o muchos hijos sin necesidad de declarar un número fijo de ramas, lo que permite representar árboles generales (no necesariamente binarios).
